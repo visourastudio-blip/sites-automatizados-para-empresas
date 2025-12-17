@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+@layer base {
+  :root {
+    /* Visoura Dark Theme */
+    --background: 222 47% 2%;
+    --foreground: 220 14% 90%;
+
+    --card: 222 47% 5%;
+    --card-foreground: 220 14% 90%;
+
+    --popover: 222 47% 5%;
+    --popover-foreground: 220 14% 90%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 220 14% 90%;
+
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 30 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 15%;
+    --input: 217 33% 15%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 91% 45%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(217 91% 60% / 0.15) 0%, transparent 70%);
+    --gradient-accent: linear-gradient(135deg, hsl(30 90% 55%) 0%, hsl(30 90% 45%) 100%);
+    --shadow-glow: 0 0 60px hsl(217 91% 60% / 0.3);
+    --shadow-card: 0 4px 30px hsl(0 0% 0% / 0.3);
+  }
+
+  .dark {
+    --background: 222 47% 2%;
+    --foreground: 220 14% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-roboto antialiased;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-text-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-glow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-card {
+    @apply bg-card/50 backdrop-blur-sm border border-border/50;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% {
+      box-shadow: 0 0 30px hsl(217 91% 60% / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 60px hsl(217 91% 60% / 0.4);
+    }
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+}
